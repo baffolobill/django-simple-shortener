@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+
+    <title>{% block title %}URLs{% endblock %}</title>
+
+    <link href="{{MEDIA_URL}}css/addons.css" type="text/css" rel="stylesheet" />
+    <link href="{{MEDIA_URL}}css/html5.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="{{MEDIA_URL}}js/jquery-1.6.2pre.js"></script>
+    <script type="text/javascript" src="{{MEDIA_URL}}js/jquery.blockUI.js"></script>
+    <!--[if IE 7.0]>
+    <style>
+      .clearfix { display: inline-block; }
+    </style>
+    <![endif]-->
+
+  </head>
+
+  <body>
+    <div class="wrapper clearfix">
+        {% block content %}{% endblock %}
+    </div><!-- end div.wrapper -->
+  </body>
+</html>

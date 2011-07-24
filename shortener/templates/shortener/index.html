@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="links-form clearfix">
+  {# if show_url_form #}
+  <form name="url_form" id="url_form" action="/submit/" method="get">
+    <input type="text" tabindex="1" name="u" class="inputbox" id="id_u" value="" />
+
+    <input tabindex="2" type="submit" id="id_submitbutton" class="submitbutton" value="shorten" />
+  </form>
+  {# endif #}
+</div>
+<div id="link-response" class="response clearfix" style="display:none;">
+
+</div>
+
+<script type="text/javascript">
+var _label = "Enter url here";
+$(document).ready(function() {
+  $("#id_u").focus().select();
+
+  $('#id_u').focusin(function(){
+    var _v = $.trim($(this).val());
+    if (_v.length == 0 || _v == _label){
+      $(this).removeClass('hint').val('');
+    }
+  });
+  $('#id_u').focusout(function(){
+    var _v = $.trim($(this).val());
+    if (_v.length == 0) {
+      $(this).addClass('hint').val(_label);
+    }
+  });
+
+  $('#url_form').submit(function(){
+    var _v = $.trim($('#id_u').val());
+    if (_v.length == 0 || _v == _label){
+      return false;
+    }
+    jQuery('div.wrapper').block({
+          message: null,
+          fadeIn:0,
+          fadeOut:0,
+          overlayCSS:{backgroundColor:'#fff'}
+    });
+    jQuery('div.wrapper').append('<div class="loading"></div>');
+    jQuery('#link-response').hide().html('');
+    jQuery.ajax({
+      url: '/submit/ajax/',
+      dataType: 'json',
+      data: jQuery('#url_form').serialize(),
+      success: function(response){
+        if (response.error){
+          jQuery('#link-response').html('<p class="error"><span>Error:</span> '+response.error+'</p>');
+        } else {
+          jQuery('#link-response').html('<p class="url"><span>From URL:</span> '+response.url+'</p>'+
+                                        '<p class="score"><span>Score:</span> '+response.score+'</p>'+
+                                        '<p class="submitted"><span>Submitted:</span> '+response.submitted+'</p>');
+          jQuery('#id_u').val(response.short_url);
+        }
+
+        jQuery('#link-response').show();
+      },
+      complete: function(response){
+        jQuery('div.wrapper').unblock();
+        jQuery('div.wrapper div.loading').remove();
+      }
+    });
+
+    return false;
+  });
+});
+</script>  
+{% endblock %}

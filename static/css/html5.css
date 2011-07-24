@@ -1,0 +1,116 @@
+html, body {
+    background: #FFF none repeat scroll 0 0;
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+
+
+body { font-size: 12px; }
+
+
+/* normal links */
+a { color: #571C19; text-decoration: none; }
+
+a:hover,
+a:active,
+a:focus {
+    color: #571C19;
+    text-decoration: underline;
+}
+
+/* headings & titles */
+h1 { font-size: 180%; }
+h2 { font-size: 150%; }
+h3 { font-size: 125%; }
+h4 { font-size: 100%; text-transform: UPPERCASE; }
+h5 { font-size: 100%; }
+
+
+
+/* form **/
+form label { cursor: pointer; }
+
+input, select, textarea, .inputbox {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 100%;
+    padding: 2px 5px;
+}
+
+
+/** my **/
+.wrapper { 
+    width: 600px;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+div.loading {
+    width: 42px;
+    height: 32px;
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -16px;
+    margin-top: -16px;
+    background: #fff url(../images/loading.bars.gif) no-repeat 50% 50%;
+    z-index: 2000;
+}
+
+.links-form {
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    margin: -15px 0 0;
+}
+.inputbox {
+    width: 500px;
+    padding: 1px 7px;
+    margin: 0px;
+    line-height: 1;
+    height: 25px;
+    font-size: 17px;
+    border: 1px solid #d9d9d9;
+    float: left;
+}
+.inputbox.hint { color: #ccc; }
+.submitbutton {
+    padding: 0px 5px;
+    margin: 0 0 0 3px;
+    height: 29px;
+    font-size: 15px;
+    display: block;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background: url(../images/gradient.png) repeat-x 50% 0;
+    float: left;
+}
+.submitbutton:active { background: #ccc !important; }
+.submitbutton:hover { border: 1px solid #ddd !important; }
+
+.response {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: 30px;
+}
+.response .url,
+.response .score,
+.response .info,
+.response .error,
+.response .submitted {}
+
+.response .url span,
+.response .score span,
+.response .info span,
+.response .error span,
+.response .submitted span { width: 60px; display: inline-block; }
